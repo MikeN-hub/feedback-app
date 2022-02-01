@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 
-const RatingSelect = () => {
-  const [selected, setSelected] = useState(9)
+const RatingSelect = ({ select }) => {
+  const [selected, setSelected] = useState(10)
 
   const handleChange = e => {
-    console.log(e.target.id)
+    setSelected(+e.currentTarget.value)
+    select(+e.currentTarget.value)
   }
   return (
     <ul className='rating'>
