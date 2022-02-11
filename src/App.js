@@ -7,6 +7,8 @@ import FeedbackForm from './components/FeedbackForm'
 import FeedbackList from './components/FeedbackList'
 import FeedbackStats from './components/FeedbackStats'
 import AboutPage from './pages/AboutPage'
+import AboutIconLink from './components/AboutIconLink'
+import Nav from './components/Nav'
 
 const App = () => {
   const [headerTitle, setHeaderTitle] = useState('Feedback UI')
@@ -25,6 +27,7 @@ const App = () => {
   return (
     <div className='App'>
       <Header headerTitle={headerTitle}></Header>
+      <Nav />
       <div className='container'>
         <Routes>
           <Route
@@ -42,6 +45,7 @@ const App = () => {
           ></Route>
           <Route path='about' element={<AboutPage />} />
         </Routes>
+        <AboutIconLink />
       </div>
     </div>
   )

@@ -139,7 +139,7 @@ ul {
 .rating li:hover {
   transform: scale(1.1);
   background-color: #ff6a95;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 .num-display {
   display: grid;
@@ -172,3 +172,73 @@ ul {
   color: rebeccapurple;
   padding-top: 20px;
 }
+
+.about-link {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.wrapper {
+  width: 100px;
+  max-height: 130px;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.menu-btn {
+  margin-bottom: auto;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+}
+.opened {
+  opacity: 1;
+  transition: all 1s ease-in-out;
+}
+.closed {
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+/* @keyframes opened {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes closed {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 0;
+    background-color: green;
+    color: green;
+  }
+} */
