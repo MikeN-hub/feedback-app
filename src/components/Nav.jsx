@@ -1,28 +1,59 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
 const Nav = () => {
-  const [visibleMenu, setVisibleMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
   const handleMenu = () => {
-    setVisibleMenu(prev => !prev)
+    setShowMenu((prev) => !prev)
   }
   return (
     <nav>
-      <div className='wrapper'>
+      <motion.div
+        className='menu-btn'
+        whileHover={{ scale: 1.1, filter: 'brightness(1.1)' }}
+      >
         <GiHamburgerMenu
           onClick={handleMenu}
-          className='menu-btn'
           size={30}
           color='pink'
           cursor={'pointer'}
         />
-        <div className={visibleMenu ? 'links opened' : 'links closed'}>
-          <NavLink to='/'>Home</NavLink>
-          <NavLink to='about'>About</NavLink>
-        </div>
-      </div>
+      </motion.div>
+
+      <AnimatePresence>
+        {showMenu && (
+          <motion.div
+            className='menu'
+            initial={{ y: -20, scale: 0.1 }}
+            animate={{ y: 30, scale: 1 }}
+            transition={{ type: 'spring', stiffness: 200, duration: 0.4 }}
+            exit={{ y: -20, scale: 0.1 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.4, originX: 0 }}
+              transition={{ type: 'spring', stiffness: 400 }}
+            >
+              <NavLink to='/'>
+                <motion.span whileHover={{ color: 'rgb(206,210,58)' }}>
+                  Home
+                </motion.span>
+              </NavLink>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.4, originX: 0 }}
+              transition={{ type: 'spring', stiffness: 400 }}
+            >
+              <NavLink to='/about'>
+                <motion.span whileHover={{ color: 'rgb(206,210,58)' }}>
+                  About
+                </motion.span>
+              </NavLink>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }
